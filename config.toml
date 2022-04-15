@@ -1,0 +1,4 @@
+python_version = "3.9"
+python_prod_variant = "slim"
+source_path = "src"
+# entrypoint_path = ""
