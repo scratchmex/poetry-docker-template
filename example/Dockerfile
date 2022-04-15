@@ -1,3 +1,7 @@
+# syntax = docker/dockerfile:1.3
+# this ^^ line is very important as it enables support for --mount=type=cache
+# ref: https://github.com/moby/buildkit/blob/master/frontend/dockerfile/docs/syntax.md#run---mounttypecache
+
 ## --- globals 
 
 # the following arguments aredefined via ARG to use later in other base images
@@ -62,8 +66,8 @@ COPY poetry.lock pyproject.toml ./
 # uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 # it also uses poetry caching, thanks @cbrochtrup
 # ref: https://github.com/python-poetry/poetry/issues/3374#issuecomment-857878275
-RUN --mount=type=cache,target=/home/.cache/pypoetry/cache \
-    --mount=type=cache,target=/home/.cache/pypoetry/artifacts \
+RUN --mount=type=cache,target=/opt/.cache/pypoetry/cache \
+    --mount=type=cache,target=/opt/.cache/pypoetry/artifacts \
     poetry install --no-dev --no-root
 
 
