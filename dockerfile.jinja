@@ -35,7 +35,7 @@ ENV \
     # do not ask any interactive question
     POETRY_NO_INTERACTION=1 \
     # poetry specific cache
-    POETRY_CACHE_DIR="/opt/.cache/pypoetry" \
+    POETRY_CACHE_DIR="/opt/poetry/.cache" \
     \
     ## - paths
     # this is where our requirements + virtual environment will live
@@ -66,8 +66,8 @@ COPY poetry.lock pyproject.toml ./
 # uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 # it also uses poetry caching, thanks @cbrochtrup
 # ref: https://github.com/python-poetry/poetry/issues/3374#issuecomment-857878275
-RUN --mount=type=cache,target=/opt/.cache/pypoetry/cache \
-    --mount=type=cache,target=/opt/.cache/pypoetry/artifacts \
+RUN --mount=type=cache,target=$POETRY_CACHE_DIR/cache \
+    --mount=type=cache,target=$POETRY_CACHE_DIR/artifacts \
     poetry install --no-dev --no-root
 
 
