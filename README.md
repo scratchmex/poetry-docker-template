@@ -22,4 +22,6 @@ can build multiplatform as is uses buildx: `docker buildx build --platform=linux
 
 # Notes
 
-I add a `.dockerignore` with just `**/__pycache__` for reference as my experience has seen those are the dirs who take up the most space and are useless.
+I added a `.dockerignore` with just `**/__pycache__` for reference as my experience has seen those are the dirs who take up the most space and are useless.
+
+If you want to have syntax highliting see `example/Dockerfile`
